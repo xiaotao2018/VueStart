@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title><!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>component-1 重点学习 每天都用的呢</title>
+    <script type ="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component-2 重点学习 每天都用的呢</h1>
+    <hr>
+    <div id="myapp">
+        {{message}} 
+        局部定义的<dog v-bind:here="from"></dog>
+        VUE不支持杠杠 - ，可以用驼峰写法:<dog from-here="apple"></dog>
+    </div>
+
+    <script type="text/javascript">
+
+        var myapp = new Vue ({
+            el:'#myapp',
+            data:{
+                message:'hello xiaotao!',
+                from:'GuangXi'
+            },
+            components:{//加个s能定义多个
+                "dog":{
+                    template:
+                        `
+                        <div style="color:blue;">Dog From {{here}}</div>
+                        `,
+                        props:['here']
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

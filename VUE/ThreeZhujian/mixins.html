@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Mixins 混入选项操作</title>
+    <script type ="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Mixins 混入选项操作</h1>
+    <hr>
+    <div id="myapp">
+        {{num}} 
+        <p><button @click="add" >增加</button></p>
+        <p>
+            渲染速度对比： 全局最快、混入第二、原生较慢
+        </p>
+    </div>
+
+    <script type="text/javascript">
+    
+        var addConsole ={
+            updated:function(){
+                console.log('数据发生变化,变化成了'+this.num);
+            }
+        };
+
+        Vue.mixin({
+            updated:function(){
+                console.log('我是全局的混入');
+            }
+        });
+
+        var myapp = new Vue ({
+            el:'#myapp',
+            data:{
+                num:1
+            },
+            methods:{
+                add:function(){
+                    this.num++;
+                }
+            },
+            updated:function(){
+                console.log('我是原生的update');
+            },
+            mixins:[addConsole]
+
+        })
+    </script>
+</body>
+</html>

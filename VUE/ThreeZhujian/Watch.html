@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Watch</title>
+    <script type ="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Watch 模拟天气监控</h1>
+    <div id="app">
+        <p>今日的温度：{{wendu}}</p>
+        <p>穿衣建议：{{chuanyi}}</p>
+        <button @click="shenggao">添加温度</button>
+        <button @click="jiangdi">减少温度</button>
+    </div>
+    <script type="text/javascript">
+    var chuanyiLiset=['T恤短袖','夹克长裙','羽绒服']
+    var app=new Vue({
+        el:"#app",
+        data:{
+            wendu:14,
+            chuanyi:'夹克长裙'
+
+        },
+        methods:{
+            shenggao:function(){
+                this.wendu+=5;
+            },
+            jiangdi:function(){
+                this.wendu-=5;
+            }
+        }
+        // watch:{
+        //     wendu:function(newVal,oldVal){
+        //         if(newVal>=26){
+        //             this.chuanyi=chuanyiLiset[0];
+        //         }else if(newVal<26&&newVal>0){
+        //             this.chuanyi=chuanyiLiset[1];
+        //         }else{
+        //             this.chuanyi=chuanyiLiset[2];
+        //         }
+        //     }
+        // }
+    })
+    app.$watch('wendu',function(newVal,oldVal){//实例属性的写法
+                if(newVal>=26){
+                    this.chuanyi=chuanyiLiset[0];
+                }else if(newVal<26&&newVal>0){
+                    this.chuanyi=chuanyiLiset[1];
+                }else{
+                    this.chuanyi=chuanyiLiset[2];
+                }
+            })
+    </script>
+</body>
+</html>

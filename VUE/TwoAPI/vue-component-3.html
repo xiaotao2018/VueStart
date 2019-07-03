@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title><!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>component-3 重点学习 每天都用的呢</title>
+    <script type ="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component-3 重点学习 每天都用的呢</h1>
+    <hr>
+    <div id="myapp">
+        {{message}} 
+
+        <dogbiaoqian></dogbiaoqian>
+    </div>
+
+    <script type="text/javascript">
+        var cityshengming={
+            template:
+            `
+            <div style="color:blue;">apple from Guangxi</div>
+            `
+        }
+
+        var dogmuban = {
+            template:
+            `
+            <div>
+            <p>dog from apple</p>
+            <citybiaoqian></citybiaoqian>
+            </div>
+            `,
+            components:{
+                "citybiaoqian":cityshengming
+            }
+        }
+
+
+        var myapp = new Vue ({
+            el:'#myapp',
+            data:{
+                message:'hello xiaotao!'
+            },
+            components:{//加个s能定义多个
+                "dogbiaoqian":dogmuban
+            }
+        })
+
+    </script>
+</body>
+</html>

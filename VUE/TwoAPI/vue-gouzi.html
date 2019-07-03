@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>生命周期</title>
+    <script type ="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>钩子函数-生命周期</h1>
+    <hr>
+    <div id="myapp">
+        {{message}} 
+        <br>
+        {{count}}
+        <p><button @click="add">add</button></p>
+    </div>
+    <button onclick="myapp.$destroy()">销毁</button>
+
+    <script type="text/javascript">
+        var myapp = new Vue ({
+            el:'#myapp',
+            data:{
+                message:'hello xiaotao!',
+                count:1
+            },
+            methods:{
+                    add:function(){
+                        this.count++;
+                    }
+            },
+            beforeCreate:function(){
+                console.log('1-beforeCreate 初始化之前');
+            },
+            created:function(){
+                console.log('2-created 创建完成');
+            },
+            beforeMount:function(){
+                console.log('3-beforeMount 挂载之前');
+            },
+            mounted:function(){
+                console.log('4-mounted 被创建（被挂载之后）');
+            },
+            beforeUpdate:function(){
+                console.log('5-beforeUpdate 数据更新前');
+            },
+            updated:function(){
+                console.log('6-updated 被更新后');
+            },
+            activated:function(){
+                console.log('7-activated');//暂时不讲，路由组件的时候会有特殊用处的。
+            },
+            deactivated:function(){
+                console.log('8-deactivated');//暂时不讲，路由组件的时候会有特殊用处的。
+            },
+            beforeDestroy:function(){
+                console.log('9-beforeDestroy 销毁之前');
+            },
+            destroyed:function(){
+                console.log('10-destroyed 销毁之后')
+            }
+        })
+    </script>
+</body>
+</html>

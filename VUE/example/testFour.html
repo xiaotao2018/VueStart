@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>TestFour</title>
+    <script type ="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>TestFour:v-text&v-html</h1>
+    <hr>
+    <div id="myapp">
+        <p>这是有弊端的，如果JavaScript出错，则暴露大括号里面在值<br>
+           网速慢的时候，从下往上渲染，提前显示大括号很不友好
+        </p>
+       <span> {{message}} </span>
+
+       <p>换个方式</p>
+       <span v-text="message"></span>
+
+       <p>带HTML标签也可以实现<br>
+       尽可能少用这个v-html，虽然好用，但是会引起黑客的攻击，XSS攻击，
+       特别是用户提交表单的时候会产生不安全
+       尽量少用，小经验。
+        </p>
+       <span v-html="mouXiaoxi"></span>
+    </div>
+
+    <script type="text/javascript">
+        var myapp = new Vue ({
+            el:'#myapp',
+            data:{
+                message:'hello xiaotao!',
+                /**带HTML标签的数据**/
+                mouXiaoxi:'<h1>Hi xiaotao!</h1>'
+            }
+        })
+    </script>
+</body>
+</html>

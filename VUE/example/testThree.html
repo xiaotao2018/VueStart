@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>TestThree</title>
+    <script type ="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>TestThree之v-for实例</h1>
+    <hr>
+    <div id="myapp">
+       <ul>
+           <li v-for="itemdiv in sortItems">
+               {{itemdiv}}
+           </li>
+       </ul>
+       <hr>
+       <ul>
+           <li v-for="(studiv,index) in sortStudent">
+              {{index+1}} : {{studiv.name}}---{{studiv.age}}
+           </li>
+       </ul>
+    </div>
+
+    <script type="text/javascript">
+        var myapp = new Vue ({
+            el:'#myapp',
+            data:{
+               items:[1,23,11,0,55,77,99,20,8],
+               student:[
+                   {name:'xiaotaozi1',age:58},
+                   {name:'xiaotaozi2',age:48},
+                   {name:'xiaotaozi3',age:38},
+                   {name:'xiaotaozi4',age:28},
+                   {name:'xiaotaozi5',age:18}
+               ]
+            },
+            computed:{
+                /**在输出data之前做的事情，计算**/
+                sortItems:function(){
+                    return this.items.sort(sortNumber);
+                },
+                sortStudent:function(){
+                    return studentByKey(this.student,'age')
+                }
+            }
+        });
+        function sortNumber(a,b){
+            return a-b;
+        }
+
+        function studentByKey(array,key){
+            return array.sort(function(a,b){
+            var x=a[key];
+            var y=b[key];
+            return ((x<y)?-1:((x>y)?1:0));
+            });
+        }
+    </script>
+</body>
+</html>

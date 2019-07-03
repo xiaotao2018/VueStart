@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title><!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>component-1 重点学习 每天都用的呢</title>
+    <script type ="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component-1 重点学习 每天都用的呢</h1>
+    <hr>
+    <div id="myapp">
+        {{message}} 
+        定义全局的组件<xiaotaojs></xiaotaojs>
+        局部定义的<dog></dog>
+    </div>
+
+    <script type="text/javascript">
+    Vue.component('xiaotaojs',{//只能定义一个
+        template:
+        `
+        <div style="color:red;">template模板的样式，我是全局的组件</div>
+        `
+    })
+        var myapp = new Vue ({
+            el:'#myapp',
+            data:{
+                message:'hello xiaotao!'
+            },
+            components:{//加个s能定义多个
+                "dog":{
+                    template:
+                        `
+                        <div style="color:blue;">template模板的样式，我是局部的的dog组件</div>
+                        `
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

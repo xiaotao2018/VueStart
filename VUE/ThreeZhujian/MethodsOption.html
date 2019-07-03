@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>MethodsOption</title>
+    <script type ="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>MethodsOption</h1>
+    <hr>
+    <div id="app">
+        {{appapp}}
+        <p>
+            <button @click="add(5)">add</button>
+        </p>
+        <p><btn @click.native="add(4)"></btn></p>
+        <p>click.native 表名调用构造器里的原始方法，常用！</p>
+    </div>
+    <button onclick="app.add(3)">外部ADD</button>
+
+    <script type="text/javascript">
+        var btn={
+            template:'<button>组件APP</button>'
+        }
+        var app =new Vue({
+            el:"#app",
+            data:{
+                appapp:1
+            },
+            components:{
+                "btn":btn
+            },
+            methods:{
+                add:function(num){
+                    if(num!=''){
+                        this.appapp+=num;
+                    }else{
+                        this.appapp++
+                    }
+                    console.log(event);//交互性较强的要求event
+                }
+            }
+        })
+    </script>
+</body>
+</html>

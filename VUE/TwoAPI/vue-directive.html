@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>vue directive 全自定义指令</title>
+    <script type ="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>vue directive 全自定义指令</h1>
+    <hr>
+    <div id="myapp">
+        <div v-xiaotaojs="color">{{num}} </div>
+        <div v-xiaotaotwojs="color">{{num}} </div>
+        <p><button @click="add">add</button></p>
+    </div>
+
+    <p>
+        <button onclick="unbind()">解绑</button>
+    </p>
+    <script type="text/javascript">
+    /**
+    就是把自己定义的xiaotaojs标签定义出来并且传值。
+    el 就是我们的标签  div
+    binding  是个对象，就是 v-xiaotaojs =“” 里面的东西，在这里也就是 color
+    **/
+        Vue.directive("xiaotaojs",function(el,binding){
+            console.log(el);
+            el.style="color:"+binding.value;
+            console.log(binding);
+        });
+    
+        Vue.directive("xiaotaotwojs",
+        {
+            bind:function(el,binding){//被绑定
+                console.log('1 - bind');
+                el.style="color:"+binding.value;
+
+            },
+            inserted:function(){//绑定到节点
+                console.log('2 - inserted');
+            },
+            update:function(){//组件更新
+                console.log('3 - update');
+            },
+            componentUpdated:function(){//组件更新完成
+                console.log('4 - componentUpdated');
+            },
+            unbind:function(){//解绑
+                console.log('5 - unbind');
+            }
+        }
+        );
+
+        var myapp = new Vue ({
+            el:'#myapp',
+            data:{
+                num:10,
+                color:'green'
+            },
+            methods:{
+                add:function (){
+                    this.num++;
+                }
+            }
+        })
+
+        function unbind(){
+            myapp.$destroy();
+        }
+    </script>
+</body>
+</html>

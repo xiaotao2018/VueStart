@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>TestFive</title>
+    <script type ="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>TestFive-v-on触发监听指令</h1>
+    <hr>
+    <div id="myapp">
+        本场比赛得分：{{count}} <br>
+        <button v-on:click="jiafen">加分</button>
+        <button v-on:click="jianfen">减分</button>
+
+        <p>v-on 还可以简写用@代替</p>
+         <button @click="jianfen">减分</button>
+
+        <p>输入框的绑定,keyup点+键盘码</p>
+         <input type="text" v-on:keyup.enter="onInput" v-model="secondConut">
+    </div>
+
+    <script type="text/javascript">
+        var myapp = new Vue ({
+            el:'#myapp',
+            data:{
+                count:1,
+                secondConut:1
+            },
+            methods:{
+                jiafen:function(){
+                    this.count++;
+                },
+                jianfen:function(){
+                    this.count--;
+                },
+                onInput:function(){
+                    this.count=this.count+parseInt(this.secondConut); 
+                }
+            }
+        })
+    </script>
+</body>
+</html>

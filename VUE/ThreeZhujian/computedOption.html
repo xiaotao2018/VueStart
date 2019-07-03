@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>computedOption</title>
+    <script type ="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>computed Option</h1>
+    <hr>
+    
+    <div id="app">
+        <p>{{newPrice}}</p>
+        <ul>
+            <li v-for="item in reversNews">{{item.title}} ~~ {{item.date}}</li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+    var newsList = [
+        {title:'标题1',date:'2019/06/11'},
+        {title:'标题2',date:'2019/06/10'},
+        {title:'标题3',date:'2019/06/05'},
+        {title:'标题4',date:'2019/06/08'},
+    ];
+    var app = new Vue({
+        el:"#app",
+        data:{
+            price:100,
+            newsList: newsList
+        },
+        computed:{
+            newPrice:function(){
+                return this.price='价格：' + this.price +'元';
+            },
+            reversNews:function(){
+                return this.newsList.reverse();//JS原生反转数组的方法
+            }
+        }
+    })
+    </script>
+</body>
+</html>

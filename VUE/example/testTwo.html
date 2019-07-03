@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>TestTwo</title>
+    <script type ="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>TestTWO之v-if，v-else，v-show</h1>
+    <hr>
+    <div id="myapp">
+        <p> 登录的需求<br>
+        登录了显示：欢迎<br>
+        没登录显示：请登录<br>
+        </p>
+        <div v-if="isLogin">欢迎小淘</div>
+        <div v-else>你还没登录，请登录11111111</div>
+
+        <div v-show="isShow">我叫小淘</div>
+
+         <p>v-if 和 v-show 的区别：<br>
+            1  v-if 判断是否加载，减轻服务器压力，在需要的时候加载<br>
+            2  v-show 是改变了css display=“none” 的值，可以使客户端操作更流畅。<br>
+         </p>
+    </div>
+
+    <script type="text/javascript">
+        var myapp = new Vue ({
+            el:'#myapp',
+            data:{
+                isLogin:true,
+                isShow:false
+            }
+        })
+    </script>
+</body>
+</html>

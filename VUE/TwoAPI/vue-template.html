@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>template 制作模板三种写法</title>
+    <script type ="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>template 制作模板三种写法</h1>
+    <hr>
+    <div id="myapp">
+        {{message}} 
+    </div>
+    <template id="dd2">
+        <h2 style="color:red;">我是template的标签模板</h2>
+    </template>
+    <script type="x-template" id="dd3" scr="">
+        <h2 style="color:red;">我是script的标签模板</h2>
+        <p>这种形式可以直接外部应用哦。用scr 引用外部的文件也能执行。
+    </script>
+
+    <script type="text/javascript">
+        var myapp = new Vue ({
+            el:'#myapp',
+            data:{
+                message:'hello xiaotao!'
+            },
+            template:"#dd3"//方法二，切图完可以直接用了咯，挂载一下
+            // template:`
+            //       <h2 style="color:red;">我是选项模板</h2>
+            // `//方法一,适合很小的形式，组件
+
+
+        })
+    </script>
+</body>
+</html>
